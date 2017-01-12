@@ -26,20 +26,20 @@ function ColorStop( baseHue )
 
 function PercStop( minVal, maxVal )
 {
-  	this.minVal = minVal;
-  	this.maxVal = maxVal;
-    this.val = Math.random()*(this.maxVal-this.minVal)+this.minVal;
-    this.velVal = Math.random()*(this.maxVal*0.0005)+0.0001;
+	this.minVal = minVal;
+	this.maxVal = maxVal;
+	this.val = Math.random()*(this.maxVal-this.minVal)+this.minVal;
+	this.velVal = Math.random()*(this.maxVal*0.0005)+0.0001;
   	if (Math.random()<0.5) {
-      	this.velVal = -this.velVal;
-    }
-    this.update = function() {
-    	this.val += this.velVal;
-      	if (this.val>this.maxVal || this.val<this.minVal) {
-        	this.velVal = -this.velVal;
-	    	this.val += this.velVal;
-      	}
-    };
+  		this.velVal = -this.velVal;
+	}
+	this.update = function() {
+		this.val += this.velVal;
+		if (this.val>this.maxVal || this.val<this.minVal) {
+			this.velVal = -this.velVal;
+			this.val += this.velVal;
+		}
+	};
 }
 
 
@@ -93,7 +93,7 @@ function setupWork()
 function update()
 {
   	for (var i=0; i<rearPercs.length; ++i) {
-    	rearPercs[i].update();
+		rearPercs[i].update();
 		frontPercs[i].update();
   	}
 
@@ -113,7 +113,7 @@ function update()
 	  	frontHSL[i] = "hsla("+frontColors[j].h+","+frontColors[j].s+"%,"+frontColors[j].l+"%,0.5) "+currPerc+"%";
   	}
 
-    rearGradientDiv.style.backgroundImage = gradientPrefix + rearHSL[0] +", "+ rearHSL[1] +", "+ rearHSL[2] +", "+ rearHSL[3] +")";
+	rearGradientDiv.style.backgroundImage = gradientPrefix + rearHSL[0] +", "+ rearHSL[1] +", "+ rearHSL[2] +", "+ rearHSL[3] +")";
 	frontGradientDiv.style.backgroundImage = gradientPrefix + frontHSL[0] +", "+ frontHSL[1] +", "+ frontHSL[2] +", "+ frontHSL[3] +")";
 
 	updateInterface();
@@ -137,57 +137,57 @@ function regenerate()
 function initInterface()
 {
 	gradientsDiv =  document.getElementById("gradients");
-    rearGradientDiv = document.getElementById("rear-gradient");
-    frontGradientDiv = document.getElementById("front-gradient");
-    controlsDiv = document.getElementById("controls");
-    regenerateBtn = document.getElementById("regenerate");
-    separateBtn = document.getElementById("separate");
+	rearGradientDiv = document.getElementById("rear-gradient");
+	frontGradientDiv = document.getElementById("front-gradient");
+	controlsDiv = document.getElementById("controls");
+	regenerateBtn = document.getElementById("regenerate");
+	separateBtn = document.getElementById("separate");
 	separateCaption = separateBtn.innerHTML;
 	separateDownCaption = separateBtn.getAttribute('data-down');
 
-    if (browser_touch) {
-      gradientsDiv.addEventListener( "touchend", canvasTouchEnded, false );
-      regenerateBtn.addEventListener( 'touchend',  regenerateAction, false);
-      separateBtn.addEventListener( 'touchend',  separateAction, false);
-    } else {
-      gradientsDiv.onmousemove = canvasMouseMoved;
-      regenerateBtn.addEventListener( 'click',  regenerateAction, false);
-      separateBtn.addEventListener( 'click',  separateAction, false);
-      controlsDiv.addEventListener('mouseover', function() {
-        controlsMouseOver = true;
-      }, false);
-      controlsDiv.addEventListener('mouseout', function() {
-        controlsMouseOver = false;
-      }, false);
-    }
+	if (browser_touch) {
+		gradientsDiv.addEventListener( "touchend", canvasTouchEnded, false );
+		regenerateBtn.addEventListener( 'touchend',  regenerateAction, false);
+		separateBtn.addEventListener( 'touchend',  separateAction, false);
+	} else {
+		gradientsDiv.onmousemove = canvasMouseMoved;
+		regenerateBtn.addEventListener( 'click',  regenerateAction, false);
+		separateBtn.addEventListener( 'click',  separateAction, false);
+		controlsDiv.addEventListener('mouseover', function() {
+			controlsMouseOver = true;
+		}, false);
+		controlsDiv.addEventListener('mouseout', function() {
+			controlsMouseOver = false;
+		}, false);
+	}
 
-    buttonsWaiting = 30000;
+	buttonsWaiting = 30000;
 }
 
 function updateInterface()
 {
 	if (buttonsWaiting > 0) {
-      controlsDiv.style.display = 'block';
-      if (!controlsMouseOver) {
-        buttonsWaiting -= 33;
-      }
-    } else {
-      controlsDiv.style.display = 'none';
-    }
+		controlsDiv.style.display = 'block';
+		if (!controlsMouseOver) {
+			buttonsWaiting -= 33;
+		}
+	} else {
+		controlsDiv.style.display = 'none';
+	}
 }
 
 function canvasMouseMoved( evt )
 {
-    buttonsWaiting = 500;
+	buttonsWaiting = 500;
 }
 
 function canvasTouchEnded(evt)
 {
-    if (buttonsWaiting > 0) {
-        buttonsWaiting = 0;
-    } else {
-        buttonsWaiting = 60000;
-    }
+	if (buttonsWaiting > 0) {
+		buttonsWaiting = 0;
+	} else {
+		buttonsWaiting = 60000;
+	}
 }
 
 function regenerateAction()
