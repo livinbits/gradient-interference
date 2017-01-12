@@ -83,10 +83,8 @@ function setupWork()
 			gradientPrefix = "-moz-repeating-linear-gradient(right, ";
 		}
 	}
-	console.log(gradientPrefix);
 
 	regenerate();
-
   	requestAnimationFrame(update);
 }
 
