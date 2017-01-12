@@ -1,7 +1,7 @@
 
 html, body {
-  margin:0;
-  height: 100%;
+    margin:0;
+    height: 100%;
 }
 
 #interference, #gradients {
@@ -13,7 +13,7 @@ html, body {
 }
 
 #interference {
-	background-color: #182020;
+    background-color: #182020;
 }
 
 .gradient {
@@ -28,8 +28,8 @@ html, body {
 }
 
 #gradients.separate .gradient {
-  width: 85%;
-  height: 70%;
+    width: 85%;
+    height: 70%;
 }
 
 #gradients.separate #rear-gradient {
@@ -54,18 +54,16 @@ html, body {
     width: 86px;
     height: 26px;
     margin: 1px;
-
-    font-family: "Verdana", "sans-serif";
-    font-size: 10px;
-
-	border: none;
+    border: none;
     background-color: rgba(0,0,0,.5);
     color: rgba(255,255,255,.75);
+    font-family: "Verdana", "sans-serif";
+    font-size: 10px;
 }
 
 #controls button:hover {
     background-color: rgba(0,0,0,.75);
-	color: #FFF;
+    color: #FFF;
 }
 
 #controls button:focus {
